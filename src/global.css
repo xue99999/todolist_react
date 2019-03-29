@@ -1,0 +1,37 @@
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*禁止文本缩放 字体设置  取消touch高亮效果*/
+html {
+  width: 100%;
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', Helvetica, STHeiTi, sans-serif;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  font-size: 62.5%;
+  background: transparent;
+  overflow: auto !important;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  background-color: #f7f7f7;
+}
+
+h1 {
+  margin: 0;
+  padding: 30px 0;
+}
