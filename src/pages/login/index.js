@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import {connect} from 'dva';
 import {InputItem, Button, WhiteSpace, WingBlank } from 'antd-mobile';
 
-import styles from './login.less';
+import styles from './index.less';
 import { routerRedux } from 'dva/router';
 
 
@@ -32,7 +32,8 @@ class Login extends PureComponent {
 
   // 去注册页面
   toRegister = () => {
-    console.log('toRegister')
+    const {dispatch} = this.props;
+    dispatch(routerRedux.push('/register'))
   }
 
   // 输入框

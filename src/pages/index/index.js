@@ -87,17 +87,12 @@ class Index extends PureComponent {
     const complete_list = list.filter(x => x.complete_status === COMPLETE)
 
     const ItemDom = (props) => (
-      <CheckboxItem onChange={props.onChange}>
+      <CheckboxItem onChange={props.onChange} defaultChecked={props.defaultChecked}>
         {props.content}<span className={styles.delText} onClick={props.delThing}>删除</span>
       </CheckboxItem>
     )
 
-    const SelectItemDom = (props) => (
-      <CheckboxItem onChange={props.onChange} defaultChecked>
-        {props.content}<span className={styles.delText} onClick={props.delThing}>删除</span>
-      </CheckboxItem>
-    )
-
+    // 未完成 已完成
     const Title = (props) => (
       <div className={styles.header}>
         <h3>{props.title}</h3>
@@ -105,35 +100,32 @@ class Index extends PureComponent {
       </div>
     )
 
+    // todo列表
+    const TodoList = (props) => {
+      const {list=[], select=false} = props
+      return (
+        <List>
+          {list.length > 0 ? list.map(item => (
+              <ItemDom key={item.id} {...item}
+                defaultChecked={select}
+                onChange={() => this.inputChange(item)}
+                delThing={() => this.AlertDom(item)}
+              />
+            )) : null}
+        </List>
+      )
+    }
+
     return (
       <div>
         <h1 className={styles.title}>所有的todolist</h1>
-        <Title title="未完成" number={no_complete_list.length} />
-        {no_complete_list.length > 0 ? (
-          <List>
-            {no_complete_list.map(item => (
-                <ItemDom key={item.id} {...item}
-                  onChange={() => this.inputChange(item)}
-                  delThing={() => this.AlertDom(item)}
-                />
-              ))
-            }
-          </List>
-        ) : null}
+        <Title title="未完成" number={String(no_complete_list.length)} />
+        <TodoList list={no_complete_list} />
 
         <WhiteSpace size="xl" />
 
-        <Title title="已完成" number={complete_list.length} />
-        {complete_list.length > 0 ? (
-          <List>
-            {complete_list.map(item => (
-                <SelectItemDom key={item.id} {...item}
-                  onChange={() => this.inputChange(item)}
-                  delThing={() => this.AlertDom(item)}
-                />))
-            }
-          </List>
-        ) : null}
+        <Title title="已完成" number={String(complete_list.length)} />
+        <TodoList list={complete_list} select={true} />
 
         <WingBlank>
           <WhiteSpace size="xl" />

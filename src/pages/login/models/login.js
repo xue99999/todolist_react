@@ -1,6 +1,7 @@
 import {routerRedux} from 'dva/router'
 import { login } from '../../../services/api.js'
 import { setAuthority } from '../../../utils/authority.js'
+import {SUCCESS} from '../../../utils/enum.js'
 
 export default {
   namespace: 'login',
@@ -13,7 +14,7 @@ export default {
     *login({ payload, callback }, { call, put }) {
       const response = yield call(login, payload);
       const {error_code, data: {token=''}} = response
-      if (error_code == 0) {
+      if (error_code === SUCCESS) {
         setAuthority(token)
         if (callback) callback()
       }

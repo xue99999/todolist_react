@@ -4,7 +4,7 @@ import { routerRedux } from 'dva/router';
 import { InputItem, WingBlank, Button, WhiteSpace, Toast } from 'antd-mobile';
 import {NO_COMPLETE} from '../../utils/enum.js'
 
-import styles from './add.less';
+import styles from './index.less';
 
 
 @connect(({thing, loading}) => ({

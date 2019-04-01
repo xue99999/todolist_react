@@ -11,7 +11,7 @@ export default {
     // 核销列表
     *getData({ payload }, { call, put }) {
       const response = yield call(thingList, payload)
-      if (response.error_code == SUCCESS) {
+      if (response.error_code === SUCCESS) {
         yield put({
             type: 'saveData',
             payload: response.data
@@ -20,7 +20,7 @@ export default {
     },
 
     // 新增todo
-    *addThing({ payload, callback }, { call, put }) {
+    *addThing({ payload, callback }, { call }) {
       const response = yield call(addThing, payload)
       if (callback) callback(response)
     },

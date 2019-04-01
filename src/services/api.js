@@ -1,8 +1,18 @@
 import {post, get, put, del} from "../utils/request";
 
+// 用户注册
+export async function register(params) {
+  return post('/client/register', params)
+}
+
 // 用户登录
 export async function login(params) {
   return post('/token', params)
+}
+
+// 获取用户信息
+export async function userInfo(params) {
+  return post('/token/secret', params)
 }
 
 // 获取todolist

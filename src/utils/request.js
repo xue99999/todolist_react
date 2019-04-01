@@ -58,11 +58,19 @@ function getOptions() {
   };
 }
 
+// token转化成BaseAuth
+function _getBasicAuth(str) {
+  // basicAuth 'Basic ' + Base64(token:password) password在服务器端为空
+  return str ? 'Basic ' + window.btoa(str+":"):null;
+}
+
 export function getHeaders() {
-  const token = getToken();
+  const token = getToken()
+  const auth = _getBasicAuth(token)
+  
   const headers = {
-    Authorization: token,
-  };
+    Authorization: auth,
+  }
   return headers;
 }
 
@@ -93,7 +101,7 @@ function removeEmptyObject(obj) {
 }
 
 function checkCode(response) {
-  const { error_code, msg } = response;
+  const { error_code } = response;
   // TOKEN_ISBLANK: 用户未登录, TOKEN_FAILED: 用户登录失效
   if (error_code === 1002) {
     // eslint-disable-next-line

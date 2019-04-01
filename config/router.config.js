@@ -2,13 +2,13 @@ export default [
     {
         path: '/login',
         name: '登录',
-        component: './login/login',
+        component: './login',
     },
-    // {
-    //     path: '/register',
-    //     name: '注册',
-    //     component: './register/register',
-    // },
+    {
+        path: '/register',
+        name: '注册',
+        component: './register',
+    },
     // 登录成功之后的路由
     {
         path: '/',
@@ -18,12 +18,17 @@ export default [
             {
                 path: '/todo',
                 name: '首页',
-                component: './index/index',
+                component: './index',
             },
             {
                 path: '/todo/add',
                 name: '添加todo',
-                component: './add/add',
+                component: './add',
+            },
+            {
+                path: '/my',
+                name: '个人中心',
+                component: './my',
             },
         ]
     },
