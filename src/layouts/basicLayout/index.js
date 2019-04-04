@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import router from 'umi/router'
 import { TabBar } from 'antd-mobile'
 
@@ -14,7 +14,7 @@ const tabBarData = [{
   url: '/my',
 }]
 
-class BasicLayout extends Component {
+class BasicLayout extends PureComponent {
 
   _getSelect = (url) => {
     const { location: {pathname=''} } = this.props
@@ -22,10 +22,14 @@ class BasicLayout extends Component {
   }
 
   render() {
-
     return (
         <div className={styles.baseLayout}>
-          <TabBar>
+        
+          <TabBar
+            unselectedTintColor="#333"
+            barTintColor="white"
+            tabBarPosition='bottom'
+          >
             {
               tabBarData.map(item => {
                   const selected = this._getSelect(item.url)
@@ -49,11 +53,14 @@ class BasicLayout extends Component {
                     selected={selected}
                     onPress={() => {router.push(item.url)}}
                   >
-                    {this.props.children}
+                  {/* 把需要底部导航页面的样式直接在这里设置好，到了页面就不用动了，哈哈 */}
+                    {
+                      selected?
+                      (<div className={styles.child_wrap}>{this.props.children}</div>):null
+                    }
                   </TabBar.Item>)
               })
             }
-
           </TabBar>
         </div>
     )

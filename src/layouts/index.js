@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import BaseLayout from './basicLayout'
 import DocumentTitle from 'react-document-title'
 
-const ULR_NO_LAYOUT = ['/login', '/register'];
+const ULR_NO_LAYOUT = ['/todo', '/my'];
 
 class Index extends Component {
 
@@ -25,9 +25,9 @@ class Index extends Component {
   }
 
   renderBody = () => {
-    const {location: {pathname}} = this.props;
-    if (!ULR_NO_LAYOUT.includes(pathname)) {
-      return  (<BaseLayout {...this.props} />);
+    const {location: {pathname}} = this.props
+    if (ULR_NO_LAYOUT.includes(pathname)) {
+      return  (<BaseLayout {...this.props} />)
     }
 
     return this.props.children

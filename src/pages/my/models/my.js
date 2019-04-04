@@ -4,7 +4,7 @@ import {SUCCESS} from '../../../utils/enum.js'
 export default {
   namespace: 'my',
   state: {
-    userInfo: null,
+    userInfo: {},
   },
 
   effects: {

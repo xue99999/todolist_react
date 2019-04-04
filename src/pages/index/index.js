@@ -12,10 +12,14 @@ const CheckboxItem = Checkbox.CheckboxItem;
 
 @connect(({ thing, loading }) => ({
   thing,
-  loading: loading.effects['thing/getData'],
+  a: loading.effects['thing/getData'],
 }))
 class Index extends PureComponent {
+
   componentDidMount() {
+
+    console.log('我是首页哈哈哈哈')
+
     const { dispatch } = this.props
     dispatch({
       type: 'thing/getData'

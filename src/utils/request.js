@@ -3,7 +3,7 @@ import qs from 'qs';
 import https from 'https';
 // import {Toast} from 'antd-mobile';
 
-import { getToken } from './authority';
+import { getBasicAuth } from './authority';
 import config from '../config';
 
 // const statusMessage = {
@@ -58,18 +58,11 @@ function getOptions() {
   };
 }
 
-// token转化成BaseAuth
-function _getBasicAuth(str) {
-  // basicAuth 'Basic ' + Base64(token:password) password在服务器端为空
-  return str ? 'Basic ' + window.btoa(str+":"):null;
-}
-
 export function getHeaders() {
-  const token = getToken()
-  const auth = _getBasicAuth(token)
+  const token = getBasicAuth()
   
   const headers = {
-    Authorization: auth,
+    Authorization: token,
   }
   return headers;
 }

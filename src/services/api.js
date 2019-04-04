@@ -12,7 +12,7 @@ export async function login(params) {
 
 // 获取用户信息
 export async function userInfo(params) {
-  return post('/token/secret', params)
+  return get(`/user/${params.uid}`)
 }
 
 // 获取todolist

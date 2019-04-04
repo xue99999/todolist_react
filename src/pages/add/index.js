@@ -12,6 +12,8 @@ import styles from './index.less';
   a: loading.effects['thing/addThing'],
 }))
 class Add extends PureComponent {
+
+
   state = {
     content: '',
   }
@@ -45,7 +47,7 @@ class Add extends PureComponent {
   }
 
   render() {
-
+    console.log('add ad d')
     return (
       <div>
         <h1 className={styles.title}>新增--todolist</h1>
