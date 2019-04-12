@@ -17,12 +17,12 @@ const CheckboxItem = Checkbox.CheckboxItem;
 class Index extends PureComponent {
 
   componentDidMount() {
-
-    console.log('我是首页哈哈哈哈')
-
     const { dispatch } = this.props
     dispatch({
-      type: 'thing/getData'
+      type: 'thing/getData',
+      payload: {
+        page: 1,
+      }
     })
   }
 

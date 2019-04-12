@@ -11,8 +11,8 @@ export async function login(params) {
 }
 
 // 获取用户信息
-export async function userInfo(params) {
-  return get(`/user/${params.uid}`)
+export async function userInfo() {
+  return get('/user')
 }
 
 // 获取todolist

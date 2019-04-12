@@ -1,14 +1,14 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'dva';
 import {List, Button, WhiteSpace, WingBlank } from 'antd-mobile';
-import {getToken} from '../../utils/authority.js'
 
 import styles from './index.less';
 
 
-@connect(({my, loading}) => ({
+@connect(({login, my, loading}) => ({
+  login,
   my, 
-  a: loading.effects['register/register'],
+  loading: loading.effects['my/getUserInfo'],
 }))
 class My extends PureComponent {
   
@@ -18,12 +18,15 @@ class My extends PureComponent {
 
   getUser = () => {
     const {dispatch} = this.props;
-    const params = getToken()
     dispatch({
         type: 'my/getUserInfo',
-        payload: {
-          uid: params.uid,
-        },
+    })
+  }
+
+  logout = () => {
+    const {dispatch} = this.props;
+    dispatch({
+      type: 'login/logout',
     })
   }
 
@@ -34,7 +37,7 @@ class My extends PureComponent {
           nickname='',
           email='',
         }
-      }
+      },
     } = this.props
     
 
@@ -49,7 +52,7 @@ class My extends PureComponent {
         <WhiteSpace size="lg" />
         <WhiteSpace size="lg" />
         <WingBlank>
-            <Button type="primary">注销</Button>
+            <Button type="primary" onClick={this.logout}>注销</Button>
         </WingBlank>
       </div>
     )

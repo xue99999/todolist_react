@@ -1,6 +1,7 @@
 import pageRoutes from './router.config';
 
 export default {
+    history: 'hash',
     plugins: [
         [
             "umi-plugin-react", {
@@ -14,7 +15,9 @@ export default {
         "/api": {
             "target": "http://192.168.5.76:5000/",
             "changeOrigin": true,
-            "pathRewrite": { "^/api" : "" }
+            "pathRewrite": { 
+                "^/api" : "" 
+            }
         }
     }
 }

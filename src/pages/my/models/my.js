@@ -9,8 +9,8 @@ export default {
 
   effects: {
     // 获取用户信息
-    *getUserInfo({ payload }, { call, put }) {
-      const response = yield call(userInfo, payload);
+    *getUserInfo(_, { call, put }) {
+      const response = yield call(userInfo);
       const {error_code, data} = response
       if (error_code === SUCCESS) {
           yield put({

@@ -20,7 +20,7 @@ export default {
       }
     },
     *logout(_, {put}) {
-      setAuthority('')
+      setAuthority(null)
       yield put(routerRedux.push('/login'))
     }
   },
