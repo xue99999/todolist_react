@@ -6,8 +6,11 @@ export default {
         [
             "umi-plugin-react", {
                 antd: true,
-                dva: true
-            }
+                dva: true,
+                dynamicImport: {
+                    loadingComponent: './components/Loading/index.js',
+                },
+            },
         ]
     ],
     routes: pageRoutes,
@@ -15,7 +18,7 @@ export default {
         "/api": {
             "target": "http://192.168.5.76:5000/",
             "changeOrigin": true,
-            "pathRewrite": { 
+            "pathRewrite": {
                 "^/api" : "" 
             }
         }
